@@ -1,50 +1,23 @@
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution {
 public:
-vector<vector<int>> ans;
     vector<int> rightSideView(TreeNode* root) {
-          vector<int> res;
-        if(root==NULL) return res;
-        queue<TreeNode*> q;
-        q.push(root);
-      
-        while(!q.empty()){
-        int n = q.size();
-        vector<int> curr;
-        
-        while(n--){
-        TreeNode* temp = q.front();
-        curr.push_back(temp->val);
-        q.pop();
-           
-           
-            if(temp->left) q.push(temp->left);
-            if(temp->right) q.push(temp->right);
+        vector<int> result;
+        rightViewDFS(root, result, 0);
+        return result;
+    }
 
-
+    void rightViewDFS(TreeNode* node, vector<int>& result, int depth) {
+        if (!node) {
+            return;
         }
-        ans.push_back(curr);
+
+        // If this is the first node encountered at the current depth, add it to the result.
+        if (depth == result.size()) {
+            result.push_back(node->val);
         }
-        
 
-      
-
-      for(auto vec : ans){
-          if(!vec.empty()){
-              res.push_back(vec.back());
-          }
-      }
-
-      return res;
+        // Recursively traverse the right subtree first (rightmost node at each level).
+        rightViewDFS(node->right, result, depth + 1);
+        rightViewDFS(node->left, result, depth + 1);
     }
 };
