@@ -15,11 +15,11 @@ public:
    int findMinDiff(vector<int> &v){
        if(v.size()<2) return -1;
 
-       vector<int> temp = v;
-       sort(temp.begin(),temp.end());
+    //    vector<int> v = v;
+       sort(v.begin(),v.end());
        int minDiff = INT_MAX;
-       for(int i=1;i<temp.size();i++){
-           int diff = temp[i]-temp[i-1];
+       for(int i=1;i<v.size();i++){
+           int diff = v[i]-v[i-1];
            if(diff<minDiff){
                minDiff = diff;
            }
