@@ -15,7 +15,7 @@ public:
    int findMinDiff(vector<int> &v){
        if(v.size()<2) return -1;
 
-    //    vector<int> v = v;
+  
        sort(v.begin(),v.end());
        int minDiff = INT_MAX;
        for(int i=1;i<v.size();i++){
