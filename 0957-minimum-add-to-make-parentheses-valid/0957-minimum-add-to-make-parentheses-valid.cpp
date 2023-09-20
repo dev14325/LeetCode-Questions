@@ -10,14 +10,15 @@ public:
                     st.pop();
                     
                 }
-                else {
+                else{
                     cnt++;
                 }
+                
             }
 
         }
-        cnt+=st.size();
-        return cnt;
+        // cnt+=st.size();
+        return cnt+=st.size();
         
     }
 };
