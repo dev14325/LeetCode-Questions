@@ -12,10 +12,10 @@ class Solution {
 public:
     ListNode* sortList(ListNode* head) {
         vector<int> v;
-        ListNode* temp = head;
-        while(temp!=NULL){
-            v.push_back(temp->val);
-            temp = temp->next;
+       
+        while(head!=NULL){
+            v.push_back(head->val);
+            head = head->next;
         }
 
         sort(v.begin(),v.end());
